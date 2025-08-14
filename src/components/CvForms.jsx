@@ -43,6 +43,13 @@ export function EducationForm({ listOfEducations, setEducationList }) {
     function handleAddEducation(){
         // create new education object
         // return a new educationList with that object
+        let newEducation = {
+            id: crypto.randomUUID,
+            school: 'School Name',
+            date: 'Start Date - End Date',
+            major: 'Major'
+        }
+        setEducationList([...listOfEducations, newEducation])
     }
 
     return (
@@ -51,7 +58,7 @@ export function EducationForm({ listOfEducations, setEducationList }) {
             <hr />
             <div className="education-form-box-container">
                 {listOfEducations.map((item) => {
-                    return <EducationForm education={item} 
+                    return <EducationFormBox education={item} 
                                           setSelectedId={setSelectedId}
                                           selectedId={selectedId}
                                           setEducationList={setEducationList}
@@ -59,7 +66,7 @@ export function EducationForm({ listOfEducations, setEducationList }) {
                             />
                 })}
             </div>
-            <button onClick={handleAddEducation}>Add education</button>
+            <button onClick={handleAddEducation} type="button">Add Education</button>
         </>
     )
 }
@@ -89,27 +96,33 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
             <div className="education-box">
                 <div className="education-header-container">
                     <h3>{education.school}</h3>
-                    <button onClick={handleSelect}>Edit</button>
-                    <button onClick={handleRemove}>Remove</button>
+                    <button onClick={handleSelect} type="button">Edit</button>
+                    <button onClick={handleRemove} type="button">Remove</button>
                 </div>
                 <div className="education-form">
-                    <label htmlFor=""></label>
-                    <input type="text" name="" id="" 
-                        value={education.school}
-                        onChange={handleEdit(e, 'school')}
-                    />      
-                    <label htmlFor=""></label>
-                    <input type="text" name="" id="" 
-                        value={education.major}
-                        onChange={handleEdit(e, 'major')}
-                    />        
-                    <label htmlFor=""></label>
-                    <input type="text" name="" id="" 
-                        value={education.date}
-                        onChange={handleEdit(e, 'date')}
-                    />        
+                    <p>
+                        <label htmlFor="school"></label>
+                        <input type="text" name="school" id="school"
+                            value={education.school}
+                            onChange={handleEdit(e, 'school')}
+                        />
+                    </p>    
+                    <p>
+                        <label htmlFor="major"></label>
+                        <input type="text" name="major" id="major"
+                            value={education.major}
+                            onChange={handleEdit(e, 'major')}
+                        />
+                    </p>       
+                    <p>
+                        <label htmlFor="date"></label>
+                        <input type="text" name="date" id="date"
+                            value={education.date}
+                            onChange={handleEdit(e, 'date')}
+                        />
+                    </p>
                 </div>
-                <button onClick={handleClose}>Close</button>
+                <button onClick={handleClose} type="button">Close</button>
                 <hr />
             </div>
         )
@@ -119,8 +132,8 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                 <div className="education-box">
                     <div className="education-header-container">
                         <h3>{education.school}</h3>
-                        <button>Edit</button>
-                        <button>Remove</button>
+                        <button onClick={handleSelect} type="button">Edit</button>
+                        <button onClick={handleRemove} type="button">Remove</button>
                     </div>
                 </div>
                 <hr />
