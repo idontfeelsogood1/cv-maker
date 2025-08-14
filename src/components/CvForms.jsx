@@ -80,29 +80,35 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
     function handleRemove() {
         // remove the object with the current education.id
         // return a new educationList without that object
-        let remainingList = listOfEducations.filter((object) => {
-            if (object.id !== education.id) {
-                return {
-                    id: object.id,
-                    school: object.school,
-                    date: object.date,
-                    major: object.major
-                }
-            }
+        
+        let listCopy = listOfEducations.map((object) => {
+            return {...object}
         })  
+        let remainingList = listCopy.filter((object) => {
+            if (object.id !== education.id) return true
+            else return false
+        })
         setEducationList(remainingList)
     }
 
-    function handleEdit(e, string) {
-        // select object with selectedId in array
+    function handleEdit(e, field) {
+        // select object with selectedId in listOfEducation
         // change that object field
         // return a new educationList with that object
+
+        let changedList = listOfEducations.map((object) => {
+            if (object.id === education.id) {
+                return {...object, [field]: e.target.value}
+            } else {
+                return {...object}
+            }
+        })
     }
 
     function handleClose() {
         // set selectedId to null
     }
-
+    
     if (selectedId === education.id) {
         return (
             <div className="education-box">
