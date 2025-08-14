@@ -12,6 +12,7 @@ function App() {
     })
 
     const [educationList, setEducationList] = useState([{
+      id: crypto.randomUUID,
       school: 'Your Education',
       date: 'Started - Ended',
       major: 'Some major in example'
