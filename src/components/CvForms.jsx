@@ -44,7 +44,7 @@ export function EducationForm({ listOfEducations, setEducationList }) {
         // create new education object
         // return a new educationList with that object
         let newEducation = {
-            id: crypto.randomUUID,
+            id: crypto.randomUUID(),
             school: 'School Name',
             date: 'Start Date - End Date',
             major: 'Major'
@@ -72,10 +72,10 @@ export function EducationForm({ listOfEducations, setEducationList }) {
 }
 
 function EducationFormBox({ education, setSelectedId, selectedId, setEducationList, listOfEducations }) {
-    function handleEdit(e, string) {
-        // select object with selectedId in array
-        // change that object field
-        // return a new educationList with that object
+    function handleSelect() {
+        // set selectedId to current education.id
+        console.log(education.id)
+        setSelectedId(education.id)
     }
 
     function handleRemove() {
@@ -83,12 +83,14 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
         // return a new educationList without that object
     }
 
-    function handleClose() {
-        // set selectedId to null
+    function handleEdit(e, string) {
+        // select object with selectedId in array
+        // change that object field
+        // return a new educationList with that object
     }
 
-    function handleSelect() {
-        // set selectedId to current education.id
+    function handleClose() {
+        // set selectedId to null
     }
 
     if (selectedId === education.id) {
@@ -104,21 +106,27 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                         <label htmlFor="school"></label>
                         <input type="text" name="school" id="school"
                             value={education.school}
-                            onChange={handleEdit(e, 'school')}
+                            onChange={(e) => {
+                                handleEdit(e, 'school')}
+                            }
                         />
                     </p>    
                     <p>
                         <label htmlFor="major"></label>
                         <input type="text" name="major" id="major"
                             value={education.major}
-                            onChange={handleEdit(e, 'major')}
+                            onChange={(e) => {
+                                handleEdit(e, 'major')}
+                            }
                         />
                     </p>       
                     <p>
                         <label htmlFor="date"></label>
                         <input type="text" name="date" id="date"
                             value={education.date}
-                            onChange={handleEdit(e, 'date')}
+                            onChange={(e) => {
+                                handleEdit(e, 'date')}
+                            }
                         />
                     </p>
                 </div>
