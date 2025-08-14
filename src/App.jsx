@@ -1,4 +1,4 @@
-import { ContactCV, EducationCV } from "./components/CvSections"
+import { ContactCV, EducationCV, ExperienceCv } from "./components/CvSections"
 import { useState } from "react";
 import { ContactForm, EducationForm } from "./components/CvForms";
 
@@ -15,7 +15,15 @@ function App() {
       id: crypto.randomUUID(),
       school: 'School Name',
       date: 'Start Date - End Date',
-      major: 'Major'
+      major: 'Your Major'
+    }])
+
+    const [experienceList, setExperienceList] = useState([{
+      id: crypto.randomUUID(),
+      job: 'Your Job',
+      position: 'Your Position',
+      description: 'Your Experience Description (eg: contributed to something, increased revenue or something like that)',
+      date: 'Start Date - End Date'
     }])
 
   return (
@@ -33,7 +41,9 @@ function App() {
           <section id="cv-education">
             <EducationCV listOfEducations={educationList}/>
           </section>
-          <section id="cv-experience"></section>
+          <section id="cv-experience">
+            <ExperienceCv listOfExperience={experienceList}/>
+          </section>
         </section>
 
         <section id="cv-forms">
