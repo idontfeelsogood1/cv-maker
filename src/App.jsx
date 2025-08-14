@@ -1,6 +1,6 @@
 import { ContactCV, EducationCV, ExperienceCv } from "./components/CvSections"
 import { useState } from "react";
-import { ContactForm, EducationForm } from "./components/CvForms";
+import { ContactForm, EducationForm, ExperienceForm } from "./components/CvForms";
 
 // let app be the global state
 function App() {
@@ -53,7 +53,9 @@ function App() {
           <form id="form-education">
             <EducationForm listOfEducations={educationList} setEducationList={setEducationList}/>
           </form>
-          <form id="form-experience"></form>
+          <form id="form-experience">
+            <ExperienceForm listOfExperience={experienceList} setExperienceList={setExperienceList}/>
+          </form>
         </section>  
       </main>
     </>
