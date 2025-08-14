@@ -38,7 +38,7 @@ export function ContactForm({contact, onChange}) {
 }
 
 export function EducationForm({ listOfEducations, setEducationList }) {
-    let [selectedId, setSelectedId] = useState('null')
+    let [selectedId, setSelectedId] = useState(null)
 
     function handleAddEducation(){
         // create new education object
@@ -109,6 +109,7 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
 
     function handleClose() {
         // set selectedId to null
+        setSelectedId(null)
     }
     
     if (selectedId === education.id) {
