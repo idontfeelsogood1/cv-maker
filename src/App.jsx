@@ -1,21 +1,21 @@
 import { ContactCV, EducationCV } from "./components/CvSections"
 import { useState } from "react";
-import { ContactForm } from "./components/CvForms";
+import { ContactForm, EducationForm } from "./components/CvForms";
 
 // let app be the global state
 function App() {
     const [contact, setContact] = useState({
-      name: 'Set Your Name',
-      mail: 'someoneexample@gmail.com',
-      phone: 'Your phone number',
-      address: 'Your address'
+      name: 'Your Name',
+      mail: 'yourmail@gmail.com',
+      phone: 'Phone Number',
+      address: 'Address'
     })
 
     const [educationList, setEducationList] = useState([{
       id: crypto.randomUUID,
-      school: 'Your Education',
-      date: 'Started - Ended',
-      major: 'Some major in example'
+      school: 'School Name',
+      date: 'Start Date - End Date',
+      major: 'Major'
     }])
 
   return (
@@ -40,7 +40,9 @@ function App() {
           <form id="form-detail">
             <ContactForm contact={contact} onChange={setContact} />
           </form>
-          <form id="form-education"></form>
+          <form id="form-education">
+            <EducationForm listOfEducations={educationList} setEducationList={setEducationList}/>
+          </form>
           <form id="form-experience"></form>
         </section>  
       </main>
