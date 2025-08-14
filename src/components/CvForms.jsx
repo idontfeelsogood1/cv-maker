@@ -74,13 +74,23 @@ export function EducationForm({ listOfEducations, setEducationList }) {
 function EducationFormBox({ education, setSelectedId, selectedId, setEducationList, listOfEducations }) {
     function handleSelect() {
         // set selectedId to current education.id
-        console.log(education.id)
         setSelectedId(education.id)
     }
 
     function handleRemove() {
-        // remove the object with the current education.id in arr
+        // remove the object with the current education.id
         // return a new educationList without that object
+        let remainingList = listOfEducations.filter((object) => {
+            if (object.id !== education.id) {
+                return {
+                    id: object.id,
+                    school: object.school,
+                    date: object.date,
+                    major: object.major
+                }
+            }
+        })  
+        setEducationList(remainingList)
     }
 
     function handleEdit(e, string) {
