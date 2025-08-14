@@ -206,38 +206,38 @@ export function ExperienceForm({ listOfExperience, setExperienceList }) {
 
 function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId, setExperienceList }) {
     function handleSelect() {
-        // set selectedId to current education.id
-        setSelectedId(education.id)
+        // set selectedId to current experience.id
+        setSelectedId(experience.id)
     }
 
     function handleRemove() {
-        // remove the object with the current education.id
-        // return a new educationList without that object
+        // remove the object with the current experience.id
+        // return a new experienceList without that object
         
-        let listCopy = listOfEducations.map((object) => {
+        let listCopy = listOfExperience.map((object) => {
             return {...object}
         })  
         let remainingList = listCopy.filter((object) => {
-            if (object.id !== education.id) return true
+            if (object.id !== experience.id) return true
             else return false
         })
-        setEducationList(remainingList)
+        setExperienceList(remainingList)
     }
 
     function handleEdit(e, field) {
-        // select object with selectedId in listOfEducation
+        // select object with selectedId in listOfExperience
         // change that object field
-        // return a new educationList with that object
+        // return a new experienceList with that object
 
-        let changedList = listOfEducations.map((object) => {
-            if (object.id === education.id) {
+        let changedList = listOfExperience.map((object) => {
+            if (object.id === experience.id) {
                 return {...object, [field]: e.target.value}
             } else {
                 return {...object}
             }
         })
 
-        setEducationList(changedList)
+        setExperienceList(changedList)
     }
 
     function handleClose() {
