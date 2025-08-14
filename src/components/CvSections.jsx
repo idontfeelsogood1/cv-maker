@@ -26,9 +26,8 @@ export function EducationCV({ listOfEducations }) {
 }
 
 function EducationBox({ education }) {
-    console.log(education)
     return (
-        <div className="education-box">
+        <div className="education-box" key={education.id}>
             <div className="schoolANDdate-container">
                 <h3>{education.school}</h3>
                 <span>{education.date}</span>
