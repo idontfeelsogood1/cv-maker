@@ -27,12 +27,39 @@ export function EducationCV({ listOfEducations }) {
 
 function EducationBox({ education }) {
     return (
-        <div className="education-box" key={education.id}>
+        <div className="education-box">
             <div className="schoolANDdate-container">
                 <h3>{education.school}</h3>
                 <span>{education.date}</span>
             </div>
             <p>{education.major}</p>
+        </div>
+    )
+}
+
+export function ExperienceCv({ listOfExperience }) {
+    return (
+        <>
+            <h2>Experience</h2>
+            <hr />
+            <div id="experience-container">
+                {listOfExperience.map((item) => {
+                    return <ExperienceBox experience={item} />
+                })}
+            </div>
+        </>
+    )
+}
+
+function ExperienceBox({ experience }) {
+    return (
+        <div className="experience-box">
+            <div className="experienceANDdate-container">
+                <h3>{experience.job}</h3>
+                <span>{experience.date}</span>
+            </div>
+            <p>{experience.position}</p>
+            <p>{experience.description}</p>
         </div>
     )
 }
