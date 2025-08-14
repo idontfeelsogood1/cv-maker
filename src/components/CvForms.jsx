@@ -103,6 +103,8 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                 return {...object}
             }
         })
+
+        setEducationList(changedList)
     }
 
     function handleClose() {
