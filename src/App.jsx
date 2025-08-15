@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <header id="app-name">
-        <span>CV Maker</span>
+        <h1>CV Maker</h1>
         <button id="download-btn">Download</button>
       </header>
 
