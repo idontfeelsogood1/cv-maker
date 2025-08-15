@@ -13,14 +13,14 @@ function App() {
 
     const [educationList, setEducationList] = useState([{
       id: crypto.randomUUID(),
-      school: 'School Name',
+      school: 'Where You Studied',
       date: 'Start Date - End Date',
       major: 'Your Major'
     }])
 
     const [experienceList, setExperienceList] = useState([{
       id: crypto.randomUUID(),
-      job: 'Your Job',
+      job: 'Where You Worked',
       position: 'Your Position',
       description: 'Your Experience Description (eg: contributed to something, increased revenue or something like that)',
       date: 'Start Date - End Date'

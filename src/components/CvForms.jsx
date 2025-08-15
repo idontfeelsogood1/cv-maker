@@ -5,34 +5,36 @@ export function ContactForm({contact, onChange}) {
         <>
             <h2>Details</h2>
             <hr />
-            <p>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" id="name"
-                    value={contact.name}
-                    onChange={(e) => onChange({...contact, name: e.target.value})}
-                />
-            </p>
-            <p>
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email"
-                    value={contact.mail}
-                    onChange={(e) => onChange({...contact, mail: e.target.value})}
-                />
-            </p>
-            <p>
-                <label htmlFor="phone">Phone</label>
-                <input type="text" name="phone" id="phone"
-                    value={contact.phone}
-                    onChange={(e) => onChange({...contact, phone: e.target.value})}
-                />
-            </p>
-            <p>
-                <label htmlFor="address">Address</label>
-                <input type="text" name="address" id="address"
-                    value={contact.address}
-                    onChange={(e) => onChange({...contact, address: e.target.value})}
-                />
-            </p>
+            <div className="contact-box">
+                <p>
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" name="name" id="name"
+                        value={contact.name}
+                        onChange={(e) => onChange({...contact, name: e.target.value})}
+                    />
+                </p>
+                <p>
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" name="email" id="email"
+                        value={contact.mail}
+                        onChange={(e) => onChange({...contact, mail: e.target.value})}
+                    />
+                </p>
+                <p>
+                    <label htmlFor="phone">Phone:</label>
+                    <input type="text" name="phone" id="phone"
+                        value={contact.phone}
+                        onChange={(e) => onChange({...contact, phone: e.target.value})}
+                    />
+                </p>
+                <p>
+                    <label htmlFor="address">Address:</label>
+                    <input type="text" name="address" id="address"
+                        value={contact.address}
+                        onChange={(e) => onChange({...contact, address: e.target.value})}
+                    />
+                </p>
+            </div>
         </>
     )
 }
@@ -45,9 +47,9 @@ export function EducationForm({ listOfEducations, setEducationList }) {
         // return a new educationList with that object
         let newEducation = {
             id: crypto.randomUUID(),
-            school: 'School Name',
+            school: 'Where You Studied',
             date: 'Start Date - End Date',
-            major: 'Major'
+            major: 'Your Major'
         }
         setEducationList([...listOfEducations, newEducation])
     }
@@ -66,7 +68,7 @@ export function EducationForm({ listOfEducations, setEducationList }) {
                             />
                 })}
             </div>
-            <button onClick={handleAddEducation} type="button">Add Education</button>
+            <button onClick={handleAddEducation} type="button">+ Add Education</button>
         </>
     )
 }
@@ -114,15 +116,17 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
     
     if (selectedId === education.id) {
         return (
-            <div className="education-box">
+            <div className="education-form-box">
                 <div className="education-header-container">
                     <h3>{education.school}</h3>
-                    <button onClick={handleSelect} type="button">Edit</button>
-                    <button onClick={handleRemove} type="button">Remove</button>
+                    <div className="btn-container">
+                        <button onClick={handleSelect} type="button">Edit</button>
+                        <button onClick={handleRemove} type="button">Remove</button>
+                    </div>
                 </div>
                 <div className="education-form">
                     <p>
-                        <label htmlFor="school"></label>
+                        <label htmlFor="school">School:</label>
                         <input type="text" name="school" id="school"
                             value={education.school}
                             onChange={(e) => {
@@ -131,7 +135,7 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                         />
                     </p>    
                     <p>
-                        <label htmlFor="major"></label>
+                        <label htmlFor="major">Major:</label>
                         <input type="text" name="major" id="major"
                             value={education.major}
                             onChange={(e) => {
@@ -140,7 +144,7 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                         />
                     </p>       
                     <p>
-                        <label htmlFor="date-education"></label>
+                        <label htmlFor="date-education">Date:</label>
                         <input type="text" name="date-education" id="date-education"
                             value={education.date}
                             onChange={(e) => {
@@ -159,8 +163,10 @@ function EducationFormBox({ education, setSelectedId, selectedId, setEducationLi
                 <div className="education-box">
                     <div className="education-header-container">
                         <h3>{education.school}</h3>
-                        <button onClick={handleSelect} type="button">Edit</button>
-                        <button onClick={handleRemove} type="button">Remove</button>
+                        <div className="btn-container">
+                            <button onClick={handleSelect} type="button">Edit</button>
+                            <button onClick={handleRemove} type="button">Remove</button>
+                        </div>
                     </div>
                 </div>
                 <hr />
@@ -177,7 +183,7 @@ export function ExperienceForm({ listOfExperience, setExperienceList }) {
         // return a new experienceList with that object
         let newExperience = {
             id: crypto.randomUUID(),
-            job: 'Your Job',
+            job: 'Where You Worked',
             position: 'Your Position',
             description: 'Your Experience Description (eg: contributed to something, increased revenue or something like that)',
             date: 'Start Date - End Date'
@@ -199,7 +205,7 @@ export function ExperienceForm({ listOfExperience, setExperienceList }) {
                                           />
                 })}
             </div>
-            <button onClick={handleAddExperience} type="button">Add Experience</button>
+            <button onClick={handleAddExperience} type="button">+ Add Experience</button>
         </>
     )
 }
@@ -248,15 +254,17 @@ function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId
     
     if (selectedId === experience.id) {
         return (
-            <div className="experience-box">
+            <div className="experience-form-box">
                 <div className="experience-header-container">
                     <h3>{experience.job}</h3>
-                    <button onClick={handleSelect} type="button">Edit</button>
-                    <button onClick={handleRemove} type="button">Remove</button>
+                    <div className="btn-container">
+                        <button onClick={handleSelect} type="button">Edit</button>
+                        <button onClick={handleRemove} type="button">Remove</button>
+                    </div>
                 </div>
                 <div className="experience-form">
                     <p>
-                        <label htmlFor="job"></label>
+                        <label htmlFor="job">Job:</label>
                         <input type="text" name="job" id="job"
                             value={experience.job}
                             onChange={(e) => {
@@ -265,7 +273,7 @@ function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId
                         />
                     </p>    
                     <p>
-                        <label htmlFor="position"></label>
+                        <label htmlFor="position">Position:</label>
                         <input type="text" name="position" id="position"
                             value={experience.position}
                             onChange={(e) => {
@@ -274,7 +282,7 @@ function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId
                         />
                     </p>       
                     <p>
-                        <label htmlFor="description"></label>
+                        <label htmlFor="description">Description:</label>
                         <textarea type="text" name="description" id="description"
                             value={experience.description}
                             onChange={(e) => {
@@ -283,7 +291,7 @@ function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId
                         />
                     </p>
                     <p>
-                        <label htmlFor="date-experience"></label>
+                        <label htmlFor="date-experience">Date:</label>
                         <input type="text" name="date-experience" id="date-experience"
                             value={experience.date}
                             onChange={(e) => {
@@ -302,8 +310,10 @@ function ExperienceBox({ experience, selectedId, listOfExperience, setSelectedId
                 <div className="experience-box">
                     <div className="experience-header-container">
                         <h3>{experience.job}</h3>
-                        <button onClick={handleSelect} type="button">Edit</button>
-                        <button onClick={handleRemove} type="button">Remove</button>
+                        <div className="btn-container">
+                            <button onClick={handleSelect} type="button">Edit</button>
+                            <button onClick={handleRemove} type="button">Remove</button>
+                        </div>
                     </div>
                 </div>
                 <hr />
